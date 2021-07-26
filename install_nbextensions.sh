@@ -1,6 +1,7 @@
 #!/bin/bash
 
 pip install notebook
+pip install autopep8
 pip install "nbconvert<6"
 pip install jupyter_contrib_nbextensions
 jupyter contrib nbextension install --user
