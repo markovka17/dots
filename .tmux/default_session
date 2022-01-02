@@ -9,8 +9,6 @@ else
     echo "Unexpected hostname `$hostname`"
 fi
 
-cd ~/zero10/ml/ && source .venv/bin/activate
-
 session="default"
 
 tmux new-session -s $session -d
