@@ -1,5 +1,14 @@
 #!/bin/bash
 
+hostname=$(hostname)
+if [ $hostname == "white" ]
+then
+    # `white` zero10 machine
+    cd ~/zero10/ml/ && source .venv/bin/activate
+else
+    echo "Unexpected hostname `$hostname`"
+fi
+
 cd ~/zero10/ml/ && source .venv/bin/activate
 
 session="default"
