@@ -1,0 +1,29 @@
+#!/bin/bash
+
+cd ~/zero10/ml/ && source .venv/bin/activate
+
+session="default"
+
+tmux new-session -s $session -d
+tmux split-window -v
+tmux split-window -h
+tmux select-pane -t 1
+tmux split-window -h
+
+jupyter_pane=1
+tmux send-keys -t $jupyter_pane \
+	"jupyter notebook --allow-root --ip 0.0.0.0 --no-browser" \
+	Enter
+
+nvidia_smi_pane=2
+tmux send-keys -t $nvidia_smi_pane \
+	"watch -n 1.0 nvidia-smi" \
+	Enter
+
+htop_pane=4
+tmux send-keys -t $htop_pane "htop" Enter
+
+empty_pane=3
+tmux select-pane -t $empty_pane
+
+tmux attach-session -t $session
